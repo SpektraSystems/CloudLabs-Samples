@@ -290,7 +290,7 @@
         "autoUpgradeMinorVersion": true,
         "settings": {
           "fileUris": [
-            "https://armtemp.blob.core.windows.net/demo/script.sh"
+            "https://raw.githubusercontent.com/SpektraSystems/CloudLabs-Samples/master/vm-linux-datadisk/script.sh"
           ],
           "commandToExecute": "sh script.sh"
         }
