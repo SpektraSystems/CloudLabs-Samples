@@ -83,6 +83,20 @@
       "metadata": {
         "description": "Name of the Network Security Group"
       }
+    },
+    "_artifactsLocation": {
+      "defaultValue": "[deployment().properties.templateLink.uri]",
+      "type": "String",
+      "metadata": {
+        "description": "The base URI where artifacts required by this template are located. When the template is deployed using the accompanying scripts, a private location in the subscription will be used and this value will be automatically generated"
+        }
+    },
+    "_artifactsLocationSasToken": {
+      "defaultValue": "",
+      "type": "SecureString",
+      "metadata": {
+        "description": "The sasToken required to access _artifactsLocation.  When the template is deployed using the accompanying scripts, a sasToken will be automatically generated"
+        }
     }
   },
   "variables": {
@@ -287,7 +301,7 @@
         "autoUpgradeMinorVersion": true,
         "settings": {
           "fileUris": [
-            "https://raw.githubusercontent.com/SpektraSystems/CloudLabs-Samples/master/vm-linux-datadisk/script.sh"
+            "[uri(parameters('_artifactsLocation'), concat('script.sh', parameters('_artifactsLocationSasToken')))]"
           ],
           "commandToExecute": "sh script.sh"
         }
